@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import carousel from "../views/carousel.vue";
+import movieShows from "../views/movieShows";
 
 Vue.use(VueRouter);
 
@@ -10,6 +11,12 @@ const routes = [
       path: "/",
       name: "home",
       component: Home
+   },
+
+   {
+      path: "/movieShows",
+      name: "movieShows",
+      component: movieShows
    },
 
    {
