@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <style>
+         p {
+            opacity: 0.5;
+         }
+         p:hover {
+            color: black;
+            transform: scale(4);
+            cursor: pointer;
+            transition: 4s;
+            border-bottom: 5px solid red;
+            opacity: 1;
+         }
+      </style>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <title>Document</title>
+   </head>
+   <body>
+      <script src="jquery-3.4.1.min.js"></script>
+      <script
+         src="https://code.jquery.com/jquery-3.4.1.js"
+         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+         crossorigin="anonymous"
+      ></script>
+      <script>
+         var url = "em=world&ew=book";
+         function parseUrl(url) {
+            arr = {};
+            var a = url.split(/&(?!;)/);
+            for (x in a) {
+               var del = a[x].split("=");
+               arr[del[0]] = del[1];
+            }
+            return arr;
+         }
+
+         $("body").append(
+            "<pre style='align-items: center; height: 30em; justify-content: center;  color: red; font-size: 20px; display: flex;'><p style: margin: 0;>" +
+               JSON.stringify(parseUrl(url), undefined, 4) +
+               "</p></pre>"
+         );
+      </script>
+   </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <style>
+         #paraph {
+            font-size: 40px;
+            text-align: center;
+         }
+         #paraph:hover {
+            border-radius: 20px;
+         }
+      </style>
+      <link
+         rel="stylesheet"
+         href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+         crossorigin="anonymous"
+      />
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <title>Document</title>
+   </head>
+   <body>
+      <div
+         style="position: absolute; top: 40%; left: 40%;  width: 400px; height: 200px;"
+         class="container"
+      >
+         <div id="paraph"></div>
+         <form>
+            <div class="form-group">
+               <label for="text">number</label>
+               <input type="number" class="form-control" id="text" />
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="send">
+               Send
+            </button>
+            <button type="submit" class="btn btn-primary" id="clear">
+               Clear
+            </button>
+         </form>
+      </div>
+   </body>
+   <script>
+      const form = document.querySelector("form");
+      const send = document.getElementById("send");
+      const clear = document.getElementById("clear");
+      const input = document.getElementById("text");
+      const paraph = document.getElementById("paraph");
+
+      send.onclick = () => {
+         const key = "num32";
+         const value = text.value;
+         console.log(key);
+         console.log(value);
+
+         if (key && value) {
+            localStorage.setItem(key, value);
+            location.reload();
+         } else if ((value && key) <= 0) {
+            send.disabled = true;
+         } else {
+            send.disabled = false;
+         }
+      };
+      clear.onclick = () => {
+         localStorage.clear();
+      };
+
+      for (let i = 0; i < localStorage.length; i++) {
+         const key = localStorage.key(i);
+         const value = localStorage.getItem(key);
+         window.onload = () => {
+            if (value % 2) {
+               paraph.style.color = "red";
+            } else {
+               paraph.style.color = "green";
+            }
+            paraph.innerHTML += `${value}<br/>`;
+         };
+      }
+   </script>
+</html>
