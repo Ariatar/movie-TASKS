@@ -52,7 +52,16 @@
             <h1 class="red--text text-center">{{ item.name }}</h1>
           </v-img>
           <div class="text-center">
-            <bookingPlace />
+            <div style="left: 160px; position: relative">
+              <router-link :to="'/movie/' + item._id">
+                <v-btn width="250px" class="btn-smaall success btn-floating pulse">Watch now</v-btn>
+              </router-link>
+
+              <br />
+              <div class="btn-transform">
+                <v-btn to="/movies" width="250px" class="btn-small item red">Watch Trailer</v-btn>
+              </div>
+            </div>
           </div>
         </v-flex>
       </v-layout>
@@ -61,13 +70,11 @@
 </template>
 
 <script>
-import bookingPlace from "@/components/bookingPlace.vue";
 import Loader from "@/components/Loader.vue";
 import axios from "axios";
 export default {
   components: {
-    Loader,
-    bookingPlace
+    Loader
   },
   name: "search",
   data() {
@@ -89,6 +96,9 @@ export default {
       else this.$refs[ref][0].style.display = "";
     }
   },
+  // get session
+  // get id
+  // get Post
   async getTickets() {
     try {
       await axios
